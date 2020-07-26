@@ -1,4 +1,5 @@
 import {LitElement, html, css} from "lit-element";
+import {v1} from "uuid";
 import log from "../../log/logger"
 
 class ImageCapture extends LitElement {
@@ -33,7 +34,11 @@ class ImageCapture extends LitElement {
     context.drawImage(this.video, 0, 0, this.video.videoWidth, this.video.videoHeight);
     const image = this.canvas.toDataURL('image/png');
 
-    const imageEvent = new CustomEvent("image-captured", { detail: { image }})
+    const imageEvent = new CustomEvent("image-captured", { detail: { 
+      date: new Date(),
+      uuid: v1(),
+      image,
+    }})
     this.dispatchEvent(imageEvent);
   }
   connectedCallback() {
@@ -61,6 +66,7 @@ class ImageCapture extends LitElement {
       video {
         width: 1fr;
         background-color: grey;
+        border: 7px solid  #555;
       }
     `;
   }

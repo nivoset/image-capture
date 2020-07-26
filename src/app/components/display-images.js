@@ -26,7 +26,12 @@ export default class DisplayImages extends LitElement {
   }
   static get styles() {
     return css`
-      img { width: 100px }
+      img { width: 100px;
+        border: 7px solid #fff;
+      }
+      .selected {
+        border: 7px solid #33f;
+      }
       span {
         display: grid;
         justify-items: center;
@@ -42,11 +47,18 @@ export default class DisplayImages extends LitElement {
       }
     `;
   }
+  select(uuid) {
+    return () => {
+      console.log(`uuid: ${uuid} clicked`);
+      this.selected = uuid;
+      this.requestUpdate();
+    }
+  }
   render() {
     return html`
       <span>Image Displayed: ${this.images.length}</span>
       <div>
-        ${this.images.map(({src, timestamp}) => html`<img src="${src}" alt="${timestamp}"></img>`)}
+        ${this.images.map(({src, timestamp, uuid}) => html`<img class="${uuid === this.selected ? "selected" : ""}" src="${src}" alt="${timestamp}" @click="${this.select(uuid)}"></img>`)}
       </div>
       `
   }

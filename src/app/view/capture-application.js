@@ -22,7 +22,8 @@ class CaptureApplication extends LitElement {
   }
   capture() {
     return (e) => {
-      this.images = [{ timestamp: new Date(), src: e.detail.image}, ...this.images].slice(0,6);
+
+      this.images = [{ timestamp: e.detail.date, src: e.detail.image, uuid: e.detail.uuid}, ...this.images].slice(0,6);
       localStorage.setItem("images", JSON.stringify(this.images));
       this.requestUpdate();
     }
