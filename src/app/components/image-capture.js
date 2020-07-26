@@ -61,20 +61,24 @@ class ImageCapture extends LitElement {
   static get styles() {
     return css`
       button {
-        position: absolute;
-        right: 80px;
-        top: 200px;
+        position: relative;
+        margin-left: 50vw;
+        transform: translate(-50%); 
+        top: -40px;
         font-size: 96px;
         border-width: 2px;
         border-style: solid;
         height: 120px;
         width: 120px;
         border-radius: 50%;
+        background-color: #316621;
       }
       canvas {
         display: none;
       }
       video {
+        margin-left: 50vw;
+        transform: translate(-50%); 
         background-color: grey;
         border: 7px solid  #555;
       }
