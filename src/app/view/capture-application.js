@@ -1,4 +1,5 @@
 import {LitElement, html, css} from "lit-element";
+import axios from "axios";
 import '../components/display-images'
 import '../components/image-capture'
 import log from "../../log/logger"
@@ -25,6 +26,7 @@ class CaptureApplication extends LitElement {
 
       this.images = [{ timestamp: e.detail.date, src: e.detail.image, uuid: e.detail.uuid}, ...this.images].slice(0,6);
       localStorage.setItem("images", JSON.stringify(this.images));
+      axios({ method: 'post', url: "/images", data: e.detail })
       this.requestUpdate();
     }
   }
