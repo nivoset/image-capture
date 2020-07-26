@@ -46,9 +46,9 @@ class ImageCapture extends LitElement {
     this.connectCamera();
   }
   disconnectedCallback() {
-    const tracks = this.video.srcObject.getTracks();
-  
-    tracks.forEach(track => track.stop());  
+    this.video.srcObject
+        .getTracks()
+        .forEach(track => track.stop());  
     this.video.srcObject = null;
     super.disconnectedCallback();
   }
@@ -60,11 +60,21 @@ class ImageCapture extends LitElement {
   }
   static get styles() {
     return css`
+      button {
+        position: absolute;
+        right: 80px;
+        top: 200px;
+        font-size: 96px;
+        border-width: 2px;
+        border-style: solid;
+        height: 120px;
+        width: 120px;
+        border-radius: 50%;
+      }
       canvas {
         display: none;
       }
       video {
-        width: 1fr;
         background-color: grey;
         border: 7px solid  #555;
       }
@@ -74,9 +84,13 @@ class ImageCapture extends LitElement {
     return html`
       <video 
         @click="${this.captureImage}"
-        autoplay="true"
+        autoplay
         id="videoElement">Camera is not Available
       </video>
+        
+      <button 
+        type="submit" 
+        @click="${this.captureImage}">&#43;</button>
       <canvas></canvas>
       `
   }
