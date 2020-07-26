@@ -59,8 +59,7 @@ class ImageCapture extends LitElement {
         display: none;
       }
       video {
-        width: 400px;
-        height: 300px;
+        width: 1fr;
         background-color: grey;
       }
     `;

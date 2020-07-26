@@ -19,12 +19,12 @@ class CaptureApplication extends LitElement {
   }
   capture() {
     return (e) => {
-      this.images.push({ timestamp: new Date(), src: e.detail.image});
+      this.images = [{ timestamp: new Date(), src: e.detail.image}, ...this.images];
       this.requestUpdate();
     }
   }
   disconnectedCallback() {
-    super.connectedCallback();
+    super.disconnectedCallback();
   }
   static get styles() {
     return css`

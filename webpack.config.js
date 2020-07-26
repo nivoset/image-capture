@@ -20,6 +20,10 @@ module.exports = ({ mode }) => {
     module: {
       rules: [
         {
+          test: /\.css$/i,
+          use: ['style-loader', 'css-loader'],
+        },
+        {
           test: /\.tsx?$/,
           use: 'ts-loader',
           exclude: /node_modules/,
@@ -40,12 +44,12 @@ module.exports = ({ mode }) => {
       new HtmlWebpackPlugin({
         template: './src/index.html'
       }),
-      // new CopyPlugin([
-      //   //{ from: "src/images", to: 'images' },
-      //   { from: "src/manifest.json", to: '.' },
-      //   { from: "src/offline.js", to: '.' },
-      //   { from: "src/robots.txt", to: '.' },
-      // ]),
+      new CopyPlugin({ patterns: [
+        { from: "src/images", to: 'images' },
+        { from: "src/manifest.json", to: '.' },
+        { from: "src/offline.js", to: '.' },
+        { from: "src/robots.txt", to: '.' },
+      ]}),
     ],
     devtool: mode === 'development' ? 'source-map' : 'none' 
   };

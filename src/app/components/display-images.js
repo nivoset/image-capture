@@ -34,7 +34,7 @@ export default class DisplayImages extends LitElement {
       }
       div {
         display: grid;
-        grid-template-columns: repeat(7, minmax(100px, 1fr));
+        grid-template-columns: repeat(3, minmax(100px, 1fr));
         grid-template-rows: auto;
         align-items: stretch;
         justify-items: center;
