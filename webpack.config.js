@@ -10,6 +10,12 @@ module.exports = ({ mode }) => {
       host: '0.0.0.0',//your ip address
       port: 8080,
       disableHostCheck: true,
+      proxy: {
+        '/log': {
+            target: 'http://localhost:3000',
+            secure: false
+        }
+      },
     },
     module: {
       rules: [

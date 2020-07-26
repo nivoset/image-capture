@@ -1,5 +1,5 @@
 import {LitElement, html, css} from "lit-element";
-import log from "../../log/logger"
+// import log from "../../log/logger"
 
 export default class DisplayImages extends LitElement {
   constructor() {
@@ -12,8 +12,7 @@ export default class DisplayImages extends LitElement {
     return this._images || [];
   }
   set images(images) {
-    this._images = images;
-    log.info(images);
+    this._images = [...images];
     this.requestUpdate();
   }
   
@@ -35,7 +34,7 @@ export default class DisplayImages extends LitElement {
       }
       div {
         display: grid;
-        grid-template-columns: repeat(5, 1fr);
+        grid-template-columns: repeat(7, minmax(100px, 1fr));
         grid-template-rows: auto;
         align-items: stretch;
         justify-items: center;
