@@ -3,10 +3,13 @@ import '../components/display-images'
 import '../components/image-capture'
 import log from "../../log/logger"
 
+const db = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
+
+
 class CaptureApplication extends LitElement {
   constructor() {
     super();
-    this.images = [];
+    this.images = JSON.parse(localStorage.getItem("images") || "[]");
   }
   connectedCallback() {
     super.connectedCallback();
@@ -19,7 +22,8 @@ class CaptureApplication extends LitElement {
   }
   capture() {
     return (e) => {
-      this.images = [{ timestamp: new Date(), src: e.detail.image}, ...this.images];
+      this.images = [{ timestamp: new Date(), src: e.detail.image}, ...this.images].slice(0,6);
+      localStorage.setItem("images", JSON.stringify(this.images));
       this.requestUpdate();
     }
   }
