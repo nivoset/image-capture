@@ -27,7 +27,7 @@ export default class DisplayImages extends LitElement {
   static get styles() {
     return css`
       img { width: 100px;
-        border: 7px solid #fff;
+        border: 7px solid #333;
       }
       .selected {
         border: 7px solid #33f;
@@ -36,6 +36,7 @@ export default class DisplayImages extends LitElement {
         display: grid;
         justify-items: center;
         align-items: center;
+        color: white;
       }
       div {
         display: grid;
