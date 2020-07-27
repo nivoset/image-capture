@@ -27,7 +27,7 @@ export default class DisplayImages extends LitElement {
   static get styles() {
     return css`
       img { width: 100px;
-        border: 7px solid #333;
+        border: 7px solid rgb(24, 22, 22);
       }
       .selected {
         border: 7px solid #33f;
